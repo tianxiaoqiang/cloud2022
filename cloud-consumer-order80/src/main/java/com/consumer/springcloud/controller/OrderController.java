@@ -2,11 +2,11 @@ package com.consumer.springcloud.controller;
 
 import com.commons.springcloud.entities.CommonResult;
 import com.commons.springcloud.entities.Payment;
+import com.consumer.ribbonRule.RibbonRule;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @EnableEurekaClient
 @Log4j2
+@RibbonClient(name="CLOUD-PAYMENT-SERVICE",configuration = RibbonRule.class)
 public class OrderController {
 
     @Autowired
