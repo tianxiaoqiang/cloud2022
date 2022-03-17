@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @EnableEurekaClient
 @Log4j2
+//配置Ribbon负载均衡算法(默认是轮询)
 @RibbonClient(name="CLOUD-PAYMENT-SERVICE",configuration = RibbonRule.class)
 public class OrderController {
 
